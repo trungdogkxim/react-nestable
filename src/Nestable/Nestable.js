@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import update from 'react-addons-update';
+//import update from 'react-addons-update';
 import cn from 'classnames';
 
 import { isArray, closest, getOffsetRect, listWithChildren } from '../utils';
 
-import './Nestable.css';
+//import './Nestable.css';
 import NestableItem from './NestableItem';
 
 class Nestable extends Component {
@@ -137,8 +137,8 @@ class Nestable extends Component {
             childrenProp: childrenProp
         });
 
-        items = update(items, removePath);
-        items = update(items, insertPath);
+        //items = update(items, removePath);
+        //items = update(items, insertPath);
 
         this.setState({
             items,
