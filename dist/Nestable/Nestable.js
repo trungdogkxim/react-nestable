@@ -6,9 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _react = require('react');
 
@@ -18,17 +16,25 @@ var _reactAddonsShallowCompare = require('react-addons-shallow-compare');
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
+var _reactAddonsUpdate = require('react-addons-update');
+
+var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
 var _utils = require('../utils');
 
+//require('./Nestable.css');
+
 var _NestableItem = require('./NestableItem');
 
 var _NestableItem2 = _interopRequireDefault(_NestableItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -39,13 +45,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-//import update from 'react-addons-update';
 
-
-//import './Nestable.css';
-
-
-var Nestable = function (_Component) {
+var Nestable = (function (_Component) {
     _inherits(Nestable, _Component);
 
     function Nestable(props) {
@@ -56,7 +57,6 @@ var Nestable = function (_Component) {
         _this.collapse = function (itemIds) {
             var childrenProp = _this.props.childrenProp;
             var items = _this.state.items;
-
 
             if (itemIds == 'NONE') {
                 _this.setState({
@@ -129,7 +129,6 @@ var Nestable = function (_Component) {
                 items = _this$state.items,
                 isDirty = _this$state.isDirty,
                 dragItem = _this$state.dragItem;
-
 
             _this.stopTrackMouse();
 
@@ -276,7 +275,6 @@ var Nestable = function (_Component) {
         // Public Methods
         // ––––––––––––––––––––––––––––––––––––
 
-
         // ––––––––––––––––––––––––––––––––––––
         // Methods
         // ––––––––––––––––––––––––––––––––––––
@@ -306,8 +304,8 @@ var Nestable = function (_Component) {
                 childrenProp: childrenProp
             });
 
-            //items = update(items, removePath);
-            //items = update(items, insertPath);
+            items = (0, _reactAddonsUpdate2.default)(items, removePath);
+            items = (0, _reactAddonsUpdate2.default)(items, insertPath);
 
             this.setState({
                 items: items,
@@ -456,7 +454,7 @@ var Nestable = function (_Component) {
             var npLastIndex = nextPath.length - 1;
 
             if (prevPath.length < nextPath.length) {
-                var _ret = function () {
+                var _ret = (function () {
                     // move into deep
                     var wasShifted = false;
 
@@ -478,7 +476,7 @@ var Nestable = function (_Component) {
                             return nextIndex;
                         })
                     };
-                }();
+                })();
 
                 if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
             } else if (prevPath.length == nextPath.length) {
@@ -505,7 +503,6 @@ var Nestable = function (_Component) {
                 dragItem = _state.dragItem,
                 collapsedGroups = _state.collapsedGroups;
 
-
             return {
                 dragItem: dragItem,
                 collapsedGroups: collapsedGroups,
@@ -525,7 +522,6 @@ var Nestable = function (_Component) {
 
     }, {
         key: 'renderDragLayer',
-
 
         // ––––––––––––––––––––––––––––––––––––
         // Render methods
@@ -589,7 +585,7 @@ var Nestable = function (_Component) {
     }]);
 
     return Nestable;
-}(_react.Component);
+})(_react.Component);
 
 Nestable.propTypes = {
     items: _react.PropTypes.arrayOf(_react.PropTypes.shape({
